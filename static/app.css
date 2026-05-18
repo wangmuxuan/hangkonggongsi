@@ -1,0 +1,114 @@
+:root {
+  --bg: #ffffff;
+  --text: #000000;
+  --muted: rgba(0, 0, 0, 0.62);
+  --border: rgba(0, 0, 0, 0.14);
+  --card: #ffffff;
+  --primary: #000000;
+  --danger: #000000;
+  --ok: #000000;
+  --shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Noto Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+a { color: inherit; text-decoration: none; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 22px 16px 40px; }
+.header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+.header h1 { margin: 0; font-size: 22px; letter-spacing: 0.2px; }
+.header-actions { display: flex; gap: 10px; align-items: center; }
+
+.muted { color: var(--muted); font-size: 13px; }
+.title { font-weight: 700; font-size: 16px; margin: 0 0 6px; }
+.label { font-size: 12px; color: var(--muted); margin: 10px 0 6px; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: var(--shadow);
+}
+
+.grid { display: grid; grid-template-columns: repeat(1, minmax(0, 1fr)); gap: 14px; }
+@media (min-width: 900px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.badge {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.04);
+}
+.badge.ok { border-color: rgba(0, 0, 0, 0.18); background: rgba(0, 0, 0, 0.06); }
+
+.notes { margin-top: 10px; color: var(--muted); font-size: 13px; }
+
+.two-cols { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 12px; }
+@media (min-width: 720px) { .two-cols { grid-template-columns: 1fr 1fr; } }
+
+.input {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #ffffff;
+  color: var(--text);
+  padding: 10px 10px;
+  outline: none;
+}
+.input:focus { border-color: rgba(0, 0, 0, 0.40); box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08); }
+textarea.input { resize: vertical; min-height: 66px; }
+
+.actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+.btn {
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #ffffff;
+  color: var(--text);
+  padding: 9px 12px;
+  cursor: pointer;
+  font-size: 13px;
+}
+.btn:hover { border-color: rgba(0, 0, 0, 0.26); box-shadow: 0 10px 24px rgba(0,0,0,0.10); }
+.btn.primary { background: #000000; color: #ffffff; border-color: #000000; }
+.btn.danger { background: rgba(0, 0, 0, 0.10); border-color: rgba(0, 0, 0, 0.26); }
+
+.qr { margin-top: 8px; padding: 10px; border-radius: 12px; border: 1px dashed rgba(18,24,38,0.16); display: inline-block; background: #ffffff; }
+@media (prefers-color-scheme: dark) {
+  body { background:#ffffff; color:#000000; }
+}
+
+.footer { margin-top: 16px; }
+
+.form { margin-top: 10px; display: grid; gap: 10px; }
+.field { display: grid; gap: 6px; }
+.checkbox { font-size: 13px; color: var(--muted); display: flex; gap: 8px; align-items: center; }
+
+.alert {
+  border: 1px solid rgba(0, 0, 0, 0.20);
+  background: rgba(0, 0, 0, 0.04);
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+.table-wrap { overflow: auto; margin-top: 10px; border-radius: 12px; border: 1px solid var(--border); background:#fff; }
+.table { width: 100%; border-collapse: collapse; min-width: 820px; }
+.table th, .table td { padding: 10px 10px; border-bottom: 1px solid rgba(18,24,38,0.08); vertical-align: top; text-align: left; }
+.table th { color: var(--muted); font-weight: 600; font-size: 12px; }
+.td-actions { white-space: nowrap; }
+
+.share-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 10px; }
+@media (min-width: 860px) { .share-grid { grid-template-columns: 1fr 1fr; } }
+.share-box { border: 1px solid rgba(18,24,38,0.08); border-radius: 14px; padding: 12px; background: rgba(246,247,251,0.6); }
+.share-box { background: #ffffff; }
