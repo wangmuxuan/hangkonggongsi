@@ -24,16 +24,19 @@ function ps_fetch_and_cache(int $id): void {
     ? 'UPDATE subscriptions SET cached_content = :c, cached_content_type = :ct, node_count = :nc, last_fetch_at = :lf, last_fetch_status = :st, last_fetch_error = :er, updated_at = :now WHERE id = :id'
     : 'UPDATE subscriptions SET node_count = :nc, last_fetch_at = :lf, last_fetch_status = :st, last_fetch_error = :er, updated_at = :now WHERE id = :id';
   $stmt2 = $db->prepare($sql);
-  $stmt2->execute([
-    ':c' => $content,
-    ':ct' => $contentType,
+  $params = [
     ':nc' => $nodeCount,
     ':lf' => gmdate('Y-m-d H:i:s'),
     ':st' => $status,
     ':er' => $err,
     ':now' => gmdate('Y-m-d H:i:s'),
     ':id' => $id,
-  ]);
+  ];
+  if ($setCache) {
+    $params[':c'] = $content;
+    $params[':ct'] = $contentType;
+  }
+  $stmt2->execute($params);
 }
 
 function ps_http_get(string $url): array {
