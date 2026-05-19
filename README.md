@@ -72,7 +72,13 @@ chmod 700 /www/wwwroot/你的域名/.data/proxystore
 首次部署后请立刻修改后台账号/密码：
 
 - 配置文件：`/www/wwwroot/你的域名/.data/proxystore/config.php`
-- `admin_pass_hash` 需要是 `password_hash()` 生成的哈希（不要明文存密码）
+- `admin_pass_hash` 是“加密后的哈希”，不是明文密码（使用 `password_hash()` / `password_verify()` 机制，更安全）
+
+快速改密码（在服务器执行，输出一段新的哈希，把它粘贴回 `admin_pass_hash`）：
+
+```bash
+/www/server/php/82/bin/php -r 'echo password_hash("你的新密码", PASSWORD_DEFAULT), PHP_EOL;'
+```
 
 ### 系统设置
 
